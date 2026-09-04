@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.utils.List;
 
-public class Scanner {
+public class Lox {
     public static void main(String [] args) throws IOException {
 
         if(args.length > 1) { // if there is more information given to the command line
