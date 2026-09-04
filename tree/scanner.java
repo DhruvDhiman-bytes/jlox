@@ -43,4 +43,14 @@ public class Scanner {
             run(line);
         }
     }
+
+    // function that does the job of running either the file or the prompt
+    private static void run(String source) {
+        Scanner scanner = new Scanner(source);
+        List<Token> tokens = scanner.scanToken();
+
+        for(Token token : tokens) {
+            System.out.println(token);
+        }
+    }
 }
