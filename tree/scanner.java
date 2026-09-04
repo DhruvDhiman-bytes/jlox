@@ -30,4 +30,17 @@ public class Scanner {
     }
 
     // function for coding directly in the interpreter
+    private static void runPrompt() throws IOException {
+        InputStreamReader input = new InputStreamReader(System.in);
+        BufferReader reader = new BufferReader(input);
+
+        for(;;) {
+            System.out.print(":->");
+            String line = reader.readLine();
+            if(line == null) {
+                break;
+            }
+            run(line);
+        }
+    }
 }
