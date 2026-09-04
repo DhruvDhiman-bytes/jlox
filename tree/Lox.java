@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.utils.List;
 
 public class Lox {
+    static boolean hadError = false;
     public static void main(String [] args) throws IOException {
 
         if(args.length > 1) { // if there is more information given to the command line
@@ -27,6 +28,11 @@ public class Lox {
     private static void runFile(String path) throws IOException {
         byte[] bytes = Files.readAllBytes(Path.get(path));
         run(new String(bytes, Charset.defaultCharset()));
+
+        // if statement if the code file had syntax error
+        if(hadError) {
+            System.exit(65);
+        }
     }
 
     // function for coding directly in the interpreter
@@ -41,6 +47,8 @@ public class Lox {
                 break;
             }
             run(line);
+
+            hadError = false;
         }
     }
 
@@ -52,5 +60,18 @@ public class Lox {
         for(Token token : tokens) {
             System.out.println(token);
         }
+    }
+
+    /*
+        ----- THE SECTION OF ERROR HANDLING --------
+    */
+
+    static void error(int line, String message) {
+        report(line, "", message);
+    }
+
+    private static void report (int line, String where, String message) {
+        System.err.println("[line "+ line +" ]  Error "+where+": "+message);
+        hadError = true;
     }
 }
