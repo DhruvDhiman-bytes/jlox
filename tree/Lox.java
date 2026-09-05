@@ -1,12 +1,12 @@
 package com.craftinginterpreters.lox;
 
-import java.io.BufferReader;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.utils.List;
+import java.util.List;
 
 public class Lox {
     static boolean hadError = false;
@@ -26,7 +26,7 @@ public class Lox {
 
     // function that excepts the code file when given in the command
     private static void runFile(String path) throws IOException {
-        byte[] bytes = Files.readAllBytes(Path.get(path));
+        byte[] bytes = Files.readAllBytes(Paths.get(path));
         run(new String(bytes, Charset.defaultCharset()));
 
         // if statement if the code file had syntax error
@@ -38,7 +38,7 @@ public class Lox {
     // function for coding directly in the interpreter
     private static void runPrompt() throws IOException {
         InputStreamReader input = new InputStreamReader(System.in);
-        BufferReader reader = new BufferReader(input);
+        BufferedReader reader = new BufferedReader(input);
 
         for(;;) {
             System.out.print(":->");
@@ -55,7 +55,7 @@ public class Lox {
     // function that does the job of running either the file or the prompt
     private static void run(String source) {
         Scanner scanner = new Scanner(source);
-        List<Token> tokens = scanner.scanToken();
+        List<Token> tokens = scanner.scanTokens();
 
         for(Token token : tokens) {
             System.out.println(token);
