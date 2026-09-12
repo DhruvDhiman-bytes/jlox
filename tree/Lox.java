@@ -1,4 +1,14 @@
 
+
+/*
+================================
+    THIS FILE IS THE STARTING
+    POINT, EITHER RUNNING USING
+    FILE OR INTERACTIVE SECTION
+================================
+*/
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

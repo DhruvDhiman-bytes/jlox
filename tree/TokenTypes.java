@@ -1,3 +1,16 @@
+
+
+/*
+===========================
+    THIS FILE IS USED TO
+    DEFINE THE TOKEN TYPES,
+    BASICALLY BEING THE DATA TYPE FOR
+    TOKEN
+===========================
+*/
+
+
+
 enum TokenTypes {
     // single-char token
     LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
